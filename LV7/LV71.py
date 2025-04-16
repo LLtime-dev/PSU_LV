@@ -93,4 +93,13 @@ plt.show()
 
 # TODO: Prikazi nekoliko primjera iz testnog skupa podataka koje je izgrađena mreza pogresno klasificirala
 
+misclassified_indices = np.where(y_pred_classes != y_true)[0]
 
+plt.figure(figsize=(10, 5))
+for i, index in enumerate(misclassified_indices[:10]):
+    plt.subplot(2, 5, i + 1)
+    plt.imshow(x_test[index], cmap="gray")
+    plt.title(f"True: {y_true[index]}, Pred: {y_pred_classes[index]}")
+    plt.axis("off")
+plt.tight_layout()
+plt.show()
